@@ -1,0 +1,50 @@
+纯函数：
+1.相同输入总是会返回相同输出
+2.不产生副作用（不改变任何外部状态）
+包括：
+改变了任何外部变量或对象属性（例如，全局变量，或者一个在父级函数作用域链上的变量）。
+写日志。
+在屏幕输出。
+写文件。
+发网络请求。
+触发任何外部进程。
+调用另一个有副作用的函数。
+3.不依赖于外部状态。
+如果调用一个函数，但是不使用其返回值，这个函数还有意义，
+那么它毫无疑问是一个非纯函数。对于纯函数，那就是一个空操作。
+
+函数的隐式转换：
+eg:console.log(fn+10);
+当我们没有重新定义toString与valueOf时，函数的隐式转换会调用默认的toString方法，
+它会将函数的定义内容作为字符串返回。而当我们主动定义了toString/vauleOf方法时，
+那么隐式转换的返回结果则由我们自己控制了。
+其中valueOf的优先级会比toString高一点。
+
+call和apply：
+function cat(){
+    
+}
+cat.prototype={
+    food:'fish',
+	say:function(){
+	    alert(this.food);
+	}
+}
+var blackCat=new cat;
+blackCat.say();
+但是如果我们有一个对象whiteDog={food:'bone'}，我们不想对他
+重新定义say方法，那么我们可以通过call或apply用blackCat的say方法，
+blackCat.say.call(whiteDog)；
+call和apply是为了动态改变this而出现的，当一个object没有某个方法，
+但是其他的有，我们可以借助call和apply使用其他对象的方法来操作。
+eg：arguments转换为数组
+var newArr=[].slice.call(arguments);
+
+
+不可变：
+var x=1;
+x=x+1;
+这两行代码在函数式编程中是不合法的，函数式编程中没有变量。
+函数式编程通过对变化的值创建新的副本来解决改变值的问题。
+函数式编程中没有循环，通过递归来做循环。
+
