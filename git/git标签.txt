@@ -1,0 +1,8 @@
+在最新提交上加标签
+git tag v1.0
+在指定提交加标签
+git tag v1.0 commitId
+显示所有标签
+git tag
+提交标签到远程仓库
+git push origin v1.0:v1.0
