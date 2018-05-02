@@ -1,0 +1,3 @@
+body-parser中间件:http请求体解析中间件。
+cookie-parser中间件：解析cookie并已object的形式放入到req.cookies
+urlencode中间件：
