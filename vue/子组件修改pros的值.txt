@@ -1,0 +1,16 @@
+避免在子组件修改pros的值。修改一个对象报警告，修改对象属性正常执行，父组件值也响应修改。
+1.
+this.$emit('update:title', newTitle)
+然后，父组件可以监听到这个事件，并且（如果需要的话）更新一个本地数据属性。例如：
+<text-document
+  v-bind:title="doc.title"
+  v-on:update:title="doc.title = $event"
+></text-document>
+
+2.
+为了简便，我们使用 .sync 修饰符，提供了这个模式的简写：
+<text-document v-bind:title.sync="doc.title"></text-document>
+
+3.（？？？这样使用好不好，会不会影像性能）
+<text-document v-bind.sync="doc"></text-document>
+这会传递 doc 对象中的每个属性（例如 title），作为单独的 prop，然后为每个属性添加相应的 v-on:update 监听器。

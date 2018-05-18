@@ -1,0 +1,78 @@
+所有代码最终会打包成一份js
+
+无法使用：document,window
+
+App(object)注册一个小程序：生命周期，监听函数。只能在app.js文件注册唯一的一个。
+
+前台，后台：点击小程序右上角关闭或点击home退出微信，小程序进入后台，只有进入后台一定时间或资源占用过高时小
+程序才会被销毁。
+
+onPageNotFound:重定向的页面依旧不存在时不会再次调用改周期函数。
+
+不要私自调用生命周期函数。
+
+场景值：表示当前小程序启动的来源，扫码等。
+
+安卓：
+home键退出到桌面后再次进入到小程序的情况，无法获取到场景值，会保留上一次的场景值。
+
+上拉，下拉刷新需要在app.json文件配置开启。
+
+setData():修改data，并从逻辑层发送到试图层。单词设置的数据不能超过1024KB。
+data中数据value为undefind的key无法使用setData设置。
+
+template：可以单独定义在外部wxml文件，
+引用1：
+在需要使用的wxml文件通过<import src="item.wxml"/>引入。
+只会引入改文件template内容，其他例如改文件import的内容不会被import
+引用2：include，引入完整代码，相当于拷贝代码到当前位置。
+<include src="footer.wxml"/>
+
+wxs：微信小程序脚本语言，编写在wxml的wxs标签内或。wxs文件。
+
+.wxs文件的相互引用使用require
+tip：1.必须使用相对路径。2.wxs模块均为单例，多次引用使用的都是同一个模块对象。
+
+自定义组件：
+由wxml，wxss，js，json4个文件组成。在json文件中生命component字段为true。
+在组件中不应使用id，属性，标签名选择器。
+多个slot需要在组件js中声明：
+options: {
+    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+  },
+自定义事件triggerEvent类似$emit
+
+wxml节点标签名只能是小写字母，中划线，下划线组成
+
+抽象节点：当前节点使用的组件未定，有使用组件的页面决定时可以使用抽象节点。
+
+插件：插件需要发布之后其它小程序才可以调用。
+
+分包加载
+
+更新机制：
+1.冷启动会下载新代码包。
+2.wx.getUpdateManage
+
+项目配置文件：project.config.json
+实例：
+{
+  "miniprogramRoot": "./src",
+  "qcloudRoot": "./svr",
+  "setting": {
+    "postcss": true,
+    "es6": true,
+    "minified": true,
+    "urlCheck": false
+  },
+  "packOptions": {}
+}
+
+小程序分享可以获取分享人或群的信息
+
+tabBar:app.json配置
+
+事件传参：正常事件传参会报事件not find。传参通过在标签设置data属性。event.currentTarget.dataset.XXXXX
+
+app实例没有onLoad,onUnload周期函数
+app的生命周期和页面的生命是相互交叉的

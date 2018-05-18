@@ -1,0 +1,3 @@
+不在app.js使用toast等界面操作
+
+options在app.js获取

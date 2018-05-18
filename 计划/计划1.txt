@@ -4,3 +4,9 @@ vue异步组件
 细读微信开发文档
 传给组件的参数值改变，没有发生对应变化，:class 后加属性没有加入到监测任务
 transform 矩阵
+
+typescript
+parcel打包工具
+yarn
+rollup
+Egg

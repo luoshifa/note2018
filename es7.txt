@@ -1,0 +1,16 @@
+使用 eES7的async 会报：
+
+ReferenceError: regeneratorRuntime is not defined".
+
+$ npm i --save-dev babel-plugin-transform-runtime
+
+在 .babelrc 文件中添加：
+"plugins": [[
+    "transform-runtime",
+    {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }
+  ]]

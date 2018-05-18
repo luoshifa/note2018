@@ -1,0 +1,21 @@
+微信小程序页面有栈的概念
+
+navigateTo旧页面保留在页面栈，新页面添加到页面栈。
+相同的页面重复进栈？解决方法：
+
+返回件是在页面栈上返回
+
+redirectTo，switchTab，清除栈中页面，目标页面进栈。
+
+navigateTo，redirectTo不能跳转到tabBar页面，使用switchTab
+
+路由（进入页面）和生命周期：
+小程序打开第一个页面：旧页：////新页：onLoad,onShow,onReady
+navigateTo:old:onHide/////new:onLoad,onShow,onReady
+navigateBack或左上角返回:old:onUnload ///// new:onShow
+
+tab切换和生命周期：
+A，B为tabBar
+A到A：不做任何操作
+A到B：A：onHide B：onLoad，onShow，onReady，如果B处于onHide：onShow
+非tab到tab：非tab：onUnload  tab:onLoad,onShow,onReady || onShow
