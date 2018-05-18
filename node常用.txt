@@ -1,0 +1,7 @@
+以下为npm中名称
+sha1:加密函数（强，慢）
+md5：加密函数（弱，快）
+uuid：使用 RFC4122 生成的uuid
+body-parser：解析http请求信息
+cookie-parser：解析cookie并存放到req
+moment:日期时间处理库
