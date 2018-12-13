@@ -1,3 +1,39 @@
 不在app.js使用toast等界面操作
 
 options在app.js获取
+
+用户授权处理
+wx.getSetting({
+      complete:res => {
+        if (res.authSetting['scope.werun']){
+          wx.getWeRunData({
+            complete:res => {
+              console.log(res)
+            }
+          })
+        } else if (res.authSetting['scope.werun'] == false){
+          wx.openSetting({
+            
+          })
+        }else{
+          wx.authorize({
+            scope: 'scope.werun',
+          })
+        }
+      }
+    })
+	
+一般提到：
+thirdScriptError 
+sdk uncaught third Error
+请检查微信开发者工具右边‘详情’，把ES6转ES5的打勾去掉
+
+返回上一页时带参数：
+一：app实例全局属性和本地存储
+
+onLoad只执行一次，返回是刷新页面。
+一：页面加载写在onShow
+
+用户授权第一次拒绝，再次发起授权会失败，需要在setting修改权限。
+
+轮播组件：使用display-multiple-items属性时轮播数量不能少于该属性值

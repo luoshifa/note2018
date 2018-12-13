@@ -1,0 +1,4 @@
+saveImageToPhotosAlbum将图片保存到相册，不能是网络图片。
+
+1.getImageInfo获取网络图片信息并获取本地路径。
+2.通过本地路径下载到相册

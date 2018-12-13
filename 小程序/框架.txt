@@ -76,3 +76,5 @@ tabBar:app.json配置
 
 app实例没有onLoad,onUnload周期函数
 app的生命周期和页面的生命是相互交叉的
+
+事件修饰符：小程序没有事件修饰符，阻止冒泡，bind改为catch eg：catch:tap

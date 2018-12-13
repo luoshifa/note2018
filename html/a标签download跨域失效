@@ -1,0 +1,15 @@
+let imgUrl = this.imgBase + url;
+                let img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.src = "./img/zly2.jpg";
+                img.onload = () => {
+                    let canvas = document.createElement("canvas");
+                    let ctx = canvas.getContext("2d");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img,0,0,img.width,img.height);
+                    //跨域图片会导致canvas无法调用toBlob
+                    canvas.toBlob(blob => {
+                        FileSaver.saveAs(blob,"dsfsd.png")
+                    })
+                }
